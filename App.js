@@ -2,19 +2,39 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { createBottomTabNavigator } from 'react-navigation';
 
+import Icon from 'react-native-vector-icons/Ionicons';
+
 import Profile from './Screens/Profile';
 import Recipes from './Screens/Recipes';
 import Saved from './Screens/Saved';
 
 export default createBottomTabNavigator({
   Recipes:{
-    screen: Recipes
+    screen: Recipes,
+    navigationOptions:{
+      tabBarLabel: 'RECIPES',
+      tabBarIcon:({tintColor}) => (
+        <Icon name = "ios-basket" color = {tintColor} size = {24} />
+      )
+    }
   },
   Saved:{
-    screen: Saved
-  },
+    screen: Saved,
+    navigationOptions:{
+      tabBarLabel: 'SAVED',
+      tabBarIcon:({tintColor}) => (
+        <Icon name = "ios-heart" color = {tintColor} size = {24} />
+      )
+    }
+  }, 
   Profile:{
-    screen: Profile
+    screen: Profile,
+    navigationOptions:{
+      tabBarLabel: 'PROFILES',
+      tabBarIcon:({tintColor}) => (
+        <Icon name = "ios-person" color = {tintColor} size = {24} />
+      )
+    }
   }
 });
 
