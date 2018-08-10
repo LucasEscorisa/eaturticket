@@ -2,15 +2,21 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { createBottomTabNavigator } from 'react-navigation';
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!!!</Text>
-      </View>
-    );
+import Profile from './Screens/Profile';
+import Recipes from './Screens/Recipes';
+import Saved from './Screens/Saved';
+
+export default createBottomTabNavigator({
+  Recipes:{
+    screen: Recipes
+  },
+  Saved:{
+    screen: Saved
+  },
+  Profile:{
+    screen: Profile
   }
-}
+});
 
 const styles = StyleSheet.create({
   container: {
