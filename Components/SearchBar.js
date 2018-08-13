@@ -23,7 +23,7 @@ class SearchBar extends Component {
                 <Icon name="ios-search" size={20} style={{ top: 4 }} />
                 <TextInput
                     underlineColorAndroid="transparent"
-                    placeholder="Try Simpsons"
+                    placeholder="Try Simpsons !!"
                     placeholderTextColor="grey"
                     style={{
                         flex: 1,
