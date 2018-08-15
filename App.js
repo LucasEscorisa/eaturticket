@@ -7,6 +7,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import Profile from './Screens/Profile';
 import Recipes from './Screens/Recipes';
 import Saved from './Screens/Saved';
+import Search from './Screens/Search';
 
 export default createBottomTabNavigator({
   Recipes:{
@@ -37,6 +38,7 @@ export default createBottomTabNavigator({
     }
   }
 });
+
 
 const styles = StyleSheet.create({
   container: {

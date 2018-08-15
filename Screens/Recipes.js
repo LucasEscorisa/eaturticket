@@ -18,39 +18,32 @@ import Items2 from "../Components/Items2";
 
 const { height, width } = Dimensions.get("window");
 
+HEADER_MAX_HEIGHT = 80;
+HEADER_MIN_HEIGHT = 70;
+SEARCH_MAX_HEIGHT = 80;
+SEARCH_MIN_HEIGHT = 40;
+
 class Recipes extends Component {
   render() {
     return (
       <SafeAreaView>
-      //View to separate the SearchBar from the statusBar
-        <View style={{ paddingTop: 8 }}>
-          <ScrollView>
+        <SearchBar />
+        <ScrollView style={{ paddingTop: 8 }}>
+          <View
+            style={{
+              paddingHorizontal: 20,
 
-            <SearchBar />
-
-            <View
-              style={{
-                paddingHorizontal: 20,
-                marginTop: 12,
-                flexDirection: "column",
-                flexWrap: "wrap",
-                justifyContent: "space-between"
-              }}
-            >
-        
-              <Items2 width = {width} image = {require("../assets/home.jpg")}/>
-
-              <Items2 width = {width} image = {require("../assets/home.jpg")}/>
-
-              <Items2 width = {width} image = {require("../assets/home.jpg")}/>
-
-              <Items2 width = {width} image = {require("../assets/home.jpg")}/>
-
-              <Items2 width = {width} image = {require("../assets/home.jpg")}/>
-
-            </View>
-          </ScrollView>
-        </View>
+              flexDirection: "column",
+              flexWrap: "wrap",
+              justifyContent: "space-between"
+            }}
+          >
+            <Items2 width={width} image={require("../assets/home.jpg")} />
+            <Items2 width={width} image={require("../assets/home.jpg")} />
+            <Items2 width={width} image={require("../assets/home.jpg")} />
+            <Items2 width={width} image={require("../assets/home.jpg")} />
+          </View>
+        </ScrollView>
       </SafeAreaView>
     );
   }
