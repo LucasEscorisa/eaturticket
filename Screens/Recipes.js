@@ -15,34 +15,29 @@ import Icon from "react-native-vector-icons/Ionicons";
 import SearchBar from "../Components/SearchBar";
 import Items from "../Components/Items";
 import Items2 from "../Components/Items2";
+import Items3 from "../Components/Items3";
+import HorizontalList from '../Components/HorizontalList';
 
 const { height, width } = Dimensions.get("window");
-
-HEADER_MAX_HEIGHT = 80;
-HEADER_MIN_HEIGHT = 70;
-SEARCH_MAX_HEIGHT = 80;
-SEARCH_MIN_HEIGHT = 40;
 
 class Recipes extends Component {
   render() {
     return (
-      <SafeAreaView>
+      <SafeAreaView style = {{flex: 1}}>
         <SearchBar />
-        <ScrollView style={{ paddingTop: 8 }}>
-          <View
-            style={{
-              paddingHorizontal: 20,
+        
+        <ScrollView showsVerticalScrollIndicator = {false}
+        style = {{paddingTop:16}}>
+        <HorizontalList title = 'Populares' />
+        <HorizontalList title = 'Recomendados' />
+        <HorizontalList title = 'Minha Lista' />
+        <HorizontalList title = 'Alan' />
 
-              flexDirection: "column",
-              flexWrap: "wrap",
-              justifyContent: "space-between"
-            }}
-          >
-            <Items2 width={width} image={require("../assets/home.jpg")} />
-            <Items2 width={width} image={require("../assets/home.jpg")} />
-            <Items2 width={width} image={require("../assets/home.jpg")} />
-            <Items2 width={width} image={require("../assets/home.jpg")} />
-          </View>
+
+        
+
+
+
         </ScrollView>
       </SafeAreaView>
     );

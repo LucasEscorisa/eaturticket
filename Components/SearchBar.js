@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { View, Text, StyleSheet, Platform, TextInput } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 
+
+HEADER_MAX_HEIGHT = 80;
+
 class SearchBar extends Component {
   render() {
     return (
