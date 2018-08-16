@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Platform, TextInput } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 
 
-HEADER_MAX_HEIGHT = 80;
+HEADER_MAX_HEIGHT = 97;
 
 class SearchBar extends Component {
   render() {
@@ -11,7 +11,6 @@ class SearchBar extends Component {
       <View>
         <View
           style={{
-            position: "absolute",
             top: 0,
             left: 0,
             right: 0,
@@ -30,7 +29,7 @@ class SearchBar extends Component {
             shadowColor: "black",
             shadowOpacity: 0.2,
             elevation: 1,
-            marginTop: 60
+            marginTop: - 20,
           }}
         >
           <Icon name="ios-search" size={20} style={{ top: 2 }} />

@@ -16,28 +16,24 @@ import SearchBar from "../Components/SearchBar";
 import Items from "../Components/Items";
 import Items2 from "../Components/Items2";
 import Items3 from "../Components/Items3";
-import HorizontalList from '../Components/HorizontalList';
+import PopularList from "../Components/PopularList";
+import FavoriteList from "../Components/FavoriteList";
 
 const { height, width } = Dimensions.get("window");
 
 class Recipes extends Component {
   render() {
     return (
-      <SafeAreaView style = {{flex: 1}}>
+      <SafeAreaView style={{ flex: 1 }}>
         <SearchBar />
-        
-        <ScrollView showsVerticalScrollIndicator = {false}
-        style = {{paddingTop:16}}>
-        <HorizontalList title = 'Populares' />
-        <HorizontalList title = 'Recomendados' />
-        <HorizontalList title = 'Minha Lista' />
-        <HorizontalList title = 'Alan' />
 
-
-        
-
-
-
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          style={{ paddingTop: 16 }}
+        >
+        <PopularList />
+        <FavoriteList />
+          
         </ScrollView>
       </SafeAreaView>
     );
