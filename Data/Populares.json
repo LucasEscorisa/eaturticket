@@ -1,0 +1,22 @@
+Populares =[ {
+    key: 1,
+    name : 'Jessica Jones',
+    image : require("../assets/JessicaJones.jpg"),
+  },{
+    key: 2,
+    name : 'Daredevil',
+    image : require("../assets/daredevil.jpg"),
+  },{
+    key: 3,
+    name: 'The Good Place',
+    image : require("../assets/goodPlace.jpg"),
+  },{
+    key: 4,
+    name : 'Orange is the new black ',
+    image : require("../assets/orange.jpg"),
+  },{
+    key: 5,
+    name : 'Samantha',
+    image : require("../assets/samantha.jpg"),
+  }
+  ];

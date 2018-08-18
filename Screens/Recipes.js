@@ -13,41 +13,25 @@ import {
   FlatList
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
+
+
 import SearchBar from "../Components/SearchBar";
 import Items from "../Components/Items";
 import Items2 from "../Components/Items2";
 import Items3 from "../Components/Items3";
 import PopularList from "../Components/PopularList";
 import FavoriteList from "../Components/FavoriteList";
+import Slider from "../Components/Slider";
 
 
 
 
 const { height, width } = Dimensions.get("window");
 const weight = [1, 1.2, 4];
+const data = require('../Data/Populares.json');
+const data2 = require('../Data/Favorites.json');
 
-let Populares =[ {
-  key: 1,
-  name : 'Jessica Jones',
-  image : require("../assets/JessicaJones.jpg"),
-},{
-  key: 2,
-  name : 'Daredevil',
-  image : require("../assets/JessicaJones.jpg"),
-},{
-  key: 3,
-  name: 'The Good Place',
-  image : require("../assets/JessicaJones.jpg"),
-},{
-  key: 4,
-  name : 'Orange is the new black sadsad ',
-  image : require("../assets/JessicaJones.jpg"),
-},{
-  key: 5,
-  name : 'Samantha',
-  image : require("../assets/JessicaJones.jpg"),
-}
-];
+
 
 class Recipes extends Component {
 
@@ -59,25 +43,32 @@ class Recipes extends Component {
   
         <Image 
         style = {{marginRight: 8, borderRadius: 6}} 
-        width = {width - 120}
-        height = {width  - 80}  
+        width = {width - 60}
+        height = {width  - 140}  
         source={item.image}/>
 
         <Text 
-        style = {{ width: 50, fontSize: 24, fontWeight: '600',marginVertical: 4, marginLeft: 4}} 
-        numberOfLines = {1}>  
+        style = {{ width: 250, height: 60, fontSize: 24, fontWeight: '600',marginVertical: 4, marginLeft: 4}} 
+        numberOfLines = {2}>  
           {item.name} 
         </Text>
   
   
         </View>
       );
-    } else {
+    } else if(size == "medium") {
       return(
         <View>
   
-        <Image style = {{ width: this.props.width ,height: this.props.width}} width = {width / item.size} height = {width / item.size}  source={item.image}/>
-        <Text style = {{fontSize: 10, fontWeight: '600',marginVertical: 8}} fontFit = {item.fontS} >  
+  <Image 
+        style = {{marginRight: 8, borderRadius: 6}} 
+        width = {width - 100}
+        height = {width  - 180}  
+        source={item.image}/>
+
+        <Text 
+        style = {{ width: 250, height: 60, fontSize: 20, fontWeight: '600',marginVertical: 4, marginLeft: 4}} 
+        numberOfLines = {2}>  
           {item.name} 
         </Text>
   
@@ -95,27 +86,32 @@ class Recipes extends Component {
   render() {
     return (
       <SafeAreaView style={{ flex: 1 }}>
-        <SearchBar />
 
         <ScrollView
           showsVerticalScrollIndicator={false}
           style={{ paddingTop: 16}}
           
         >
+        <Slider />
+
         
         <FlatList style = {styles.container}
           horizontal 
           showsHorizontalScrollIndicator={false}
-          data={Populares}
+          data={data}
           renderItem={({item}) => this._renderItem(item, 'large')}
           
         
         />
 
-
+        <FlatList style = {styles.container}
+          horizontal 
+          showsHorizontalScrollIndicator={false}
+          data={data2}
+          renderItem={({item}) => this._renderItem(item, 'medium')}
+          
         
-        <PopularList />
-        <FavoriteList />
+        />
           
         </ScrollView>
       </SafeAreaView>

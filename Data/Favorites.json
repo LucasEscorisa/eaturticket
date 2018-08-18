@@ -1,0 +1,22 @@
+Favorites =[ {
+    key: 1,
+    name : 'Desperate Housewives',
+    image : require("../assets/DH.jpg"),
+  },{
+    key: 2,
+    name : 'Queer Eye',
+    image : require("../assets/queerEye.jpg"),
+  },{
+    key: 3,
+    name: 'Insatiable',
+    image : require("../assets/insatiable.jpg"),
+  },{
+    key: 4,
+    name : 'The Simpsons',
+    image : require("../assets/simpsons.jpg"),
+  },{
+    key: 5,
+    name : 'Breaking Bad',
+    image : require("../assets/bb.jpg"),
+  }
+  ];
