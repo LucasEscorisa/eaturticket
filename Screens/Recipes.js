@@ -12,6 +12,9 @@ import {
   ScrollView,
   FlatList
 } from "react-native";
+
+import * as firebase from 'firebase';
+
 import Icon from "react-native-vector-icons/Ionicons";
 
 
@@ -31,9 +34,69 @@ const weight = [1, 1.2, 4];
 const data = require('../Data/Populares.json');
 const data2 = require('../Data/Favorites.json');
 
+function ignoreUndefined(data) {
+  var dados = data;
+  var auxiliar = [];
 
+    for(var i in dados)
+      if(dados[i] != undefined)
+      auxiliar.push(dados[i]);
+
+    return auxiliar;
+}
+
+function readDataBase(ref){
+  
+  ref.once('value', function (snapshot) {
+
+    //console.log('Receitas', snapshot.val());
+
+    that.setState({
+      dataSource: ignoreUndefined(snapshot.val())
+
+    }, function () {
+
+      // Leave it blank!
+
+    });
+  })
+}
 
 class Recipes extends Component {
+
+  constructor(props){
+    super(props);
+    this.state = {}
+  }
+
+
+  componentDidMount(){
+    const firebaseConfig = {
+      apiKey: "AIzaSyB_hpETlGdbaGZV4Ug1-hGlFI6lxzUvaOU",
+      authDomain: "eaturticket.firebaseapp.com",
+      databaseURL: "https://eaturticket.firebaseio.com",
+      projectId: "eaturticket",
+      storageBucket: "eaturticket.appspot.com",
+      messagingSenderId: "597805343690"
+    }
+
+    firebase.initializeApp(firebaseConfig);
+
+    var that = this;
+
+    var catalogo = firebase.database().ref('Catalogo');
+    var receitas = firebase.database().ref('Receitas');
+
+    catalogo.once('value', function(snapshot) {
+
+      that.setState({
+        dataSource: ignoreUndefined(snapshot.val())
+      }, function(){
+        // Leave it blank
+      })
+    })
+
+  };
 
   _renderItem(item, size){
     
@@ -45,12 +108,12 @@ class Recipes extends Component {
         style = {{marginRight: 8, borderRadius: 6}} 
         width = {width - 60}
         height = {width  - 140}  
-        source={item.image}/>
+        source={{uri: item.Imagem}}/>
 
         <Text 
         style = {{ width: 250, height: 60, fontSize: 24, fontWeight: '600',marginVertical: 4, marginLeft: 4}} 
         numberOfLines = {2}>  
-          {item.name} 
+          {item.Titulo} 
         </Text>
   
   
@@ -77,10 +140,7 @@ class Recipes extends Component {
           
   
       );
-
     }
-
-    
   }
 
   render() {
@@ -98,7 +158,8 @@ class Recipes extends Component {
         <FlatList style = {styles.container}
           horizontal 
           showsHorizontalScrollIndicator={false}
-          data={data}
+          data={this.state.dataSource}
+          keyExtractor = {(item) => item.key}
           renderItem={({item}) => this._renderItem(item, 'large')}
           
         
@@ -108,6 +169,7 @@ class Recipes extends Component {
           horizontal 
           showsHorizontalScrollIndicator={false}
           data={data2}
+          keyExtractor = {(item) => item.key}
           renderItem={({item}) => this._renderItem(item, 'medium')}
           
         
