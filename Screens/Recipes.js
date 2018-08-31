@@ -25,6 +25,10 @@ import Items3 from "../Components/Items3";
 import PopularList from "../Components/PopularList";
 import FavoriteList from "../Components/FavoriteList";
 import Slider from "../Components/Slider";
+import list from '../RecipesComponents/categoryList';
+import categoryList from "../RecipesComponents/categoryList";
+
+import Firebase from '../Firebase/firebase';
 
 
 
@@ -71,16 +75,6 @@ class Recipes extends Component {
 
 
   componentDidMount(){
-    const firebaseConfig = {
-      apiKey: "AIzaSyB_hpETlGdbaGZV4Ug1-hGlFI6lxzUvaOU",
-      authDomain: "eaturticket.firebaseapp.com",
-      databaseURL: "https://eaturticket.firebaseio.com",
-      projectId: "eaturticket",
-      storageBucket: "eaturticket.appspot.com",
-      messagingSenderId: "597805343690"
-    }
-
-    firebase.initializeApp(firebaseConfig);
 
     var that = this;
 
@@ -127,12 +121,12 @@ class Recipes extends Component {
         style = {{marginRight: 8, borderRadius: 6}} 
         width = {width - 100}
         height = {width  - 180}  
-        source={item.image}/>
+        source={{uri: item.Imagem}}/>
 
         <Text 
         style = {{ width: 250, height: 60, fontSize: 20, fontWeight: '600',marginVertical: 4, marginLeft: 4}} 
         numberOfLines = {2}>  
-          {item.name} 
+          {item.Titulo} 
         </Text>
   
   
@@ -152,28 +146,25 @@ class Recipes extends Component {
           style={{ paddingTop: 16}}
           
         >
-        <Slider />
 
-        
+      <Slider />
+
+
+        <Text style = {{paddingLeft: 16, fontSize: 36, fontWeight: '800'}}>Favoritos</Text>
         <FlatList style = {styles.container}
           horizontal 
           showsHorizontalScrollIndicator={false}
           data={this.state.dataSource}
-          keyExtractor = {(item) => item.key}
+          keyExtractor = {(item) => item.ID}
           renderItem={({item}) => this._renderItem(item, 'large')}
           
         
         />
 
-        <FlatList style = {styles.container}
-          horizontal 
-          showsHorizontalScrollIndicator={false}
-          data={data2}
-          keyExtractor = {(item) => item.key}
-          renderItem={({item}) => this._renderItem(item, 'medium')}
-          
-        
-        />
+
+
+
+       
           
         </ScrollView>
       </SafeAreaView>
