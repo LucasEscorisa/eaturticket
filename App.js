@@ -8,6 +8,8 @@ import Profile from './Screens/Profile';
 import Recipes from './Screens/Recipes';
 import Saved from './Screens/Saved';
 import Search from './Screens/Search';
+import RecipesList from './Screens/RecipesList';
+import RecipeContent from './Screens/RecipeContent';
 
 export default createBottomTabNavigator({
   Recipes:{
@@ -32,6 +34,24 @@ export default createBottomTabNavigator({
     screen: Profile,
     navigationOptions:{
       tabBarLabel: 'PROFILES',
+      tabBarIcon:({tintColor}) => (
+        <Icon name = "ios-person" color = {tintColor} size = {24} />
+      )
+    }
+  },
+  RecipesList:{
+    screen: RecipesList,
+    navigationOptions:{
+      tabBarLabel: 'RECIPESLIST',
+      tabBarIcon:({tintColor}) => (
+        <Icon name = "ios-person" color = {tintColor} size = {24} />
+      )
+    }
+  },
+  RecipeContent:{
+    screen: RecipeContent,
+    navigationOptions:{
+      tabBarLabel: 'RECIPECONTENT',
       tabBarIcon:({tintColor}) => (
         <Icon name = "ios-person" color = {tintColor} size = {24} />
       )

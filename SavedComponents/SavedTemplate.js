@@ -13,32 +13,48 @@ const { height, width } = Dimensions.get("window");
 class SavedTemplate extends Component {
   render() {
     return (
-      <View>
-        <View style={{ backgroundColor: "#dddddd", padding: 8, marginTop: 8 }}>
-          <Text style={{ fontSize: 24, fontWeight: "700", marginLeft: 8 }}>
-            {" "}
-            NOME DO PRATO
-          </Text>
-          <Text
-            style={{
-              fontSize: 14,
-              fontWeight: "400",
-              color: "grey",
-              marginLeft: 8
-            }}
-          >
-            {" "}
-            NOME DA SÉRIE
-          </Text>
+      <View style={{ backgroundColor: "#FFA500"}}>
+        <View style={{ 
+          marginHorizontal:8, 
+          marginVertical:4, 
+          backgroundColor: "#ffffff", 
+          borderRadius: 6}}>
+
+          <View style={{
+              margin: 8,
+              flexDirection: 'row'
+          }}>
+          <Image
+              style={{
+                borderRadius: 6,
+                width: width - 200,
+                height: width - 240,
+                resizeMode: "cover"
+              }}
+              source={require("../assets/Pancakes.jpg")}
+            />
+
+              <View>
+              <Text
+                  style={{
+                    fontSize: 14,
+                    fontWeight: "400",
+                    color: "grey",
+                    marginLeft: 8
+                  }}
+                >
+                  {" "}
+                  NOME DA SÉRIE
+                </Text>
+
+                <Text style={{ fontSize: 18, fontWeight: "700", marginTop:16 ,marginLeft: 8 }}>
+                  {" "}
+                  NOME DO PRATO
+                </Text>
+                
+              </View>
+            </View>
         </View>
-        <Image
-          style={{
-            width: width,
-            height: width - 100,
-            resizeMode: "cover"
-          }}
-          source={require("../assets/Pancakes.jpg")}
-        />
       </View>
     );
   }

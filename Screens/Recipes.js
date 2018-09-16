@@ -70,7 +70,10 @@ class Recipes extends Component {
 
   constructor(props){
     super(props);
-    this.state = {}
+    this.state = {};
+    console.ignoredYellowBox = [
+      'Setting a timer'
+      ];
   }
 
 
@@ -139,17 +142,17 @@ class Recipes extends Component {
 
   render() {
     return (
-      <SafeAreaView style={{ flex: 1 }}>
+      <SafeAreaView style={{ flex: 1, marginTop: 8, backgroundColor: '#FFA500' }}>
 
         <ScrollView
           showsVerticalScrollIndicator={false}
           style={{ paddingTop: 16}}
           
         >
-
+      
       <Slider />
 
-
+        <View style={{backgroundColor:'white', paddingVertical:8}}>
         <Text style = {{paddingLeft: 16, fontSize: 36, fontWeight: '800'}}>Favoritos</Text>
         <FlatList style = {styles.container}
           horizontal 
@@ -160,6 +163,8 @@ class Recipes extends Component {
           
         
         />
+
+        </View>
 
 
 

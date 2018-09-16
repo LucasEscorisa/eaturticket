@@ -8,7 +8,7 @@ HEADER_MAX_HEIGHT = 97;
 class Saved extends Component {
   render() {
     return (
-      <SafeAreaView style={{ flex: 1}}>
+      <SafeAreaView style={{ flex: 1, marginTop: 8}}>
         <ScrollView
           showsVerticalScrollIndicator={false}
           style={{ paddingTop: 16 }}
