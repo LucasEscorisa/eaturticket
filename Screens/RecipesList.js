@@ -8,16 +8,14 @@ HEADER_MAX_HEIGHT = 97;
 class RecipesList extends Component{
     render(){
         return(
-            <SafeAreaView style={{ flex: 1, marginTop: 8}}>
+            <SafeAreaView style={{ flex: 1, marginTop: 8, backgroundColor: "#FFA500"}}>
             <ScrollView
               showsVerticalScrollIndicator={false}
               style={{ paddingTop: 16 }}
             >
     
               <SavedTemplate />
-              <SavedTemplate />
-              <SavedTemplate />
-              <SavedTemplate />
+
     
               
             </ScrollView>

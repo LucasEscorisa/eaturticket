@@ -21,15 +21,8 @@ import * as firebase from 'firebase';
 import Icon from "react-native-vector-icons/Ionicons";
 
 
-import SearchBar from "../Components/SearchBar";
-import Items from "../Components/Items";
-import Items2 from "../Components/Items2";
-import Items3 from "../Components/Items3";
-import PopularList from "../Components/PopularList";
-import FavoriteList from "../Components/FavoriteList";
 import Slider from "../Components/Slider";
-import list from '../RecipesComponents/categoryList';
-import categoryList from "../RecipesComponents/categoryList";
+
 
 import Firebase from '../Firebase/firebase';
 
@@ -107,7 +100,7 @@ class Recipes extends Component {
         <View>
 
 
-        <TouchableOpacity onPress={()=>{this.props.navigation.navigate('RecipesList', {name: 'test'})}}>
+        <TouchableOpacity onPress={()=>{this.props.navigation.navigate('RecipesList', {Tituloshow: item.Titulo})}}>
         <Image 
         style = {{marginRight: 8, borderRadius: 6}} 
         width = {width - 60}
@@ -175,6 +168,7 @@ class Recipes extends Component {
           
         
         />
+
 
 
 

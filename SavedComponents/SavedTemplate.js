@@ -6,31 +6,76 @@ import {
   Image,
   ScrollView,
   Dimensions,
-  TouchableOpacity
+  TouchableOpacity,
+  BackHandle,
+  FlatList
 } from "react-native";
 
-import {
-  createStackNavigator,
-} from 'react-navigation';
+//import { AndroidBackHandler } from 'react-navigation-backhandler';
+
+import { withNavigation } from 'react-navigation';
+
+import * as firebase from 'firebase';
+
+import Firebase from '../Firebase/firebase';
 
 const { height, width } = Dimensions.get("window");
 
-class SavedTemplate extends Component {
-  render() {
-    return (
-      <View style={{ backgroundColor: "#FFA500"}}>
-        <View style={{ 
-          marginHorizontal:8, 
-          marginVertical:4, 
-          backgroundColor: "#ffffff", 
-          borderRadius: 6}}>
+function ignoreUndefined(data) {
+  var dados = data;
+  var auxiliar = [];
 
-          <TouchableOpacity>
+    for(var i in dados)
+      if(dados[i] != undefined)
+      auxiliar.push(dados[i]);
+
+    return auxiliar;
+}
+
+class SavedTemplate extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {};
+    console.ignoredYellowBox = [
+      'Setting a timer'
+    ];
+  }
+
+  componentWillMount() {
+
+    var that = this;
+    let idComp = this.props.navigation.state.params.Tituloshow;
+
+    var catalogo = firebase.database().ref('Catalogo');
+    var receitas = firebase.database().ref('Receitas');
+
+    receitas.orderByChild("Tituloshow").equalTo(idComp).once('value', function (snapshot) {
+
+      that.setState({
+        dataSource2: ignoreUndefined(snapshot.val())
+      }, function () {
+        // Leave it blank
+      })
+    })
+
+  };
+
+  _renderItem(item) {
+    return (
+      <View style={{
+        marginHorizontal: 8,
+        marginVertical: 4,
+        backgroundColor: "#ffffff",
+        borderRadius: 6
+      }}>
+
+        <TouchableOpacity onPress={() => { this.props.navigation.navigate('RecipeContent', { name: 'test' }) }}>
           <View style={{
-              margin: 8,
-              flexDirection: 'row'
+            margin: 8,
+            flexDirection: 'row'
           }}>
-          <Image
+            <Image
               style={{
                 borderRadius: 6,
                 width: width - 200,
@@ -40,31 +85,50 @@ class SavedTemplate extends Component {
               source={require("../assets/Pancakes.jpg")}
             />
 
-              <View>
+            <View>
               <Text
-                  style={{
-                    fontSize: 14,
-                    fontWeight: "400",
-                    color: "grey",
-                    marginLeft: 8
-                  }}
-                >
-                  {" "}
-                  NOME DA SÉRIE
-                </Text>
+                style={{
+                  fontSize: 14,
+                  fontWeight: "400",
+                  color: "grey",
+                  marginLeft: 8
+                }}
+              >
+                {item.Tituloshow}
 
-                <Text style={{ fontSize: 18, fontWeight: "700", marginTop:16 ,marginLeft: 8 }}>
-                  {" "}
-                  NOME DO PRATO
-                </Text>
-                
-              </View>
+              </Text>
+
+              <Text style={{ fontSize: 18, fontWeight: "700", marginTop: 16, marginLeft: 8 }}>
+                {item.Titulo}
+
+              </Text>
+
             </View>
-            </TouchableOpacity>
-        </View>
+          </View>
+        </TouchableOpacity>
       </View>
+    );
+  }
+
+  render() {
+    return (
+
+      <View>
+
+        <FlatList
+          data={this.state.dataSource2}
+          keyExtractor={(item) => item.ID}
+          renderItem={({ item }) => this._renderItem(item)}
+
+
+        />
+
+      </View>
+
+
+
     );
   }
 }
 
-export default SavedTemplate;
+export default withNavigation(SavedTemplate);
