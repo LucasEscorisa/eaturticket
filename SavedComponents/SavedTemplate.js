@@ -5,8 +5,13 @@ import {
   Stylesheet,
   Image,
   ScrollView,
-  Dimensions
+  Dimensions,
+  TouchableOpacity
 } from "react-native";
+
+import {
+  createStackNavigator,
+} from 'react-navigation';
 
 const { height, width } = Dimensions.get("window");
 
@@ -20,6 +25,7 @@ class SavedTemplate extends Component {
           backgroundColor: "#ffffff", 
           borderRadius: 6}}>
 
+          <TouchableOpacity>
           <View style={{
               margin: 8,
               flexDirection: 'row'
@@ -54,6 +60,7 @@ class SavedTemplate extends Component {
                 
               </View>
             </View>
+            </TouchableOpacity>
         </View>
       </View>
     );

@@ -10,8 +10,11 @@ import {
   Dimensions,
   Image,
   ScrollView,
-  FlatList
+  FlatList,
 } from "react-native";
+import {
+  createStackNavigator,
+} from 'react-navigation';
 
 import * as firebase from 'firebase';
 
@@ -98,23 +101,31 @@ class Recipes extends Component {
   _renderItem(item, size){
     
     if (size == 'large'){
+
       return(
+        
         <View>
-  
+
+
+        <TouchableOpacity onPress={()=>{this.props.navigation.navigate('RecipesList', {name: 'test'})}}>
         <Image 
         style = {{marginRight: 8, borderRadius: 6}} 
         width = {width - 60}
         height = {width  - 140}  
         source={{uri: item.Imagem}}/>
+        </TouchableOpacity>
 
         <Text 
         style = {{ width: 250, height: 60, fontSize: 24, fontWeight: '600',marginVertical: 4, marginLeft: 4}} 
         numberOfLines = {2}>  
           {item.Titulo} 
         </Text>
+        
+
   
   
         </View>
+
       );
     } else if(size == "medium") {
       return(
@@ -154,6 +165,7 @@ class Recipes extends Component {
 
         <View style={{backgroundColor:'white', paddingVertical:8}}>
         <Text style = {{paddingLeft: 16, fontSize: 36, fontWeight: '800'}}>Favoritos</Text>
+        
         <FlatList style = {styles.container}
           horizontal 
           showsHorizontalScrollIndicator={false}
@@ -163,6 +175,8 @@ class Recipes extends Component {
           
         
         />
+
+
 
         </View>
 
