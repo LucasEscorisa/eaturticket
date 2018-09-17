@@ -70,7 +70,7 @@ class SavedTemplate extends Component {
         borderRadius: 6
       }}>
 
-        <TouchableOpacity onPress={() => { this.props.navigation.navigate('RecipeContent', { name: 'test' }) }}>
+        <TouchableOpacity onPress={() => { this.props.navigation.navigate('RecipeContent', { ID: item.ID }) }}>
           <View style={{
             margin: 8,
             flexDirection: 'row'

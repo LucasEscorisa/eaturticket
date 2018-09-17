@@ -29,6 +29,9 @@ export default class App extends React.Component{
 }
 
 const RecipesNavigator = createStackNavigator({
+  RecipesHome:{
+    screen:Recipes
+  },
   RecipesList:{
     screen: RecipesList
   },
@@ -39,7 +42,7 @@ const RecipesNavigator = createStackNavigator({
 
 const BottomTabNavigator = createBottomTabNavigator({
   Recipes:{
-    screen: Recipes,
+    screen: RecipesNavigator,
     navigationOptions:{
       tabBarLabel: 'RECIPES',
       tabBarIcon:({tintColor}) => (
@@ -60,24 +63,6 @@ const BottomTabNavigator = createBottomTabNavigator({
     screen: Profile,
     navigationOptions:{
       tabBarLabel: 'PROFILES',
-      tabBarIcon:({tintColor}) => (
-        <Icon name = "ios-person" color = {tintColor} size = {24} />
-      )
-    }
-  },
-  RecipesList:{
-    screen: RecipesList,
-    navigationOptions:{
-      tabBarLabel: 'RECIPESLIST',
-      tabBarIcon:({tintColor}) => (
-        <Icon name = "ios-person" color = {tintColor} size = {24} />
-      )
-    }
-  },
-  RecipeContent:{
-    screen: RecipeContent,
-    navigationOptions:{
-      tabBarLabel: 'RECIPECONTENT',
       tabBarIcon:({tintColor}) => (
         <Icon name = "ios-person" color = {tintColor} size = {24} />
       )
